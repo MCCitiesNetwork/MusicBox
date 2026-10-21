@@ -14,9 +14,9 @@ Build and run the regression suite:
 ./gradlew clean :plugin:test build
 ```
 
-Install the shaded JAR from `build/libs` with NoteBlockAPI. Keep the existing
-`plugins/MusicBox` directory and server working directory. Read the
-[upgrade and rollback guide](docs/upgrade.md) before upgrading an existing setup.
+Install the shaded JAR from `build/libs` with NoteBlockAPI. The
+[data compatibility reference](docs/data-compatibility.md) describes retained
+identifiers, metadata, and storage formats.
 New installations add their own `.nbs` files under `plugins/MusicBox/songs`.
 
 ## Attribution and licensing
