@@ -14,6 +14,18 @@ Build and run the regression suite:
 ./gradlew clean :plugin:test build
 ```
 
+To verify Cloud's native bootstrap against an unpacked Paper 26.3 runtime,
+create a text file containing one absolute runtime/library JAR path per line,
+then run:
+
+```sh
+./gradlew :plugin:paperRuntimeTest -PpaperRuntimeClasspathFile=/path/to/runtime-classpath.txt
+```
+
+This optional check initializes the real Minecraft registries and Cloud mappings
+without starting a server. Runtime JARs are supplied locally and are not bundled
+in the plugin or test fixtures.
+
 Install the shaded JAR from `build/libs` with NoteBlockAPI. The
 [data compatibility reference](docs/data-compatibility.md) describes retained
 identifiers, metadata, and storage formats.
