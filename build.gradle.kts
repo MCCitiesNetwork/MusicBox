@@ -18,6 +18,7 @@ tasks.shadowJar {
     archiveClassifier.set("")
     relocate("org.incendo", "com.minecraftcitiesnetwork.musicbox.internal.cloud")
     relocate("org.bstats", "com.minecraftcitiesnetwork.musicbox.internal.bstats")
+    relocate("net.kyori.adventure.nbt", "com.minecraftcitiesnetwork.musicbox.internal.nbt")
     mergeServiceFiles()
 }
 tasks.jar { archiveClassifier.set("thin") }

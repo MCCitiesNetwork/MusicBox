@@ -8,7 +8,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok:1.18.42")
     annotationProcessor("org.projectlombok:lombok:1.18.42")
     implementation("org.incendo:cloud-paper:2.0.1")
-    compileOnly("net.kyori:adventure-nbt:4.26.1")
+    implementation("net.kyori:adventure-nbt:4.26.1")
     testImplementation("net.kyori:adventure-nbt:4.26.1")
     testImplementation("com.github.MilkBowl:VaultAPI:1.7") { isTransitive = false }
     implementation("org.bstats:bstats-bukkit:3.0.2")
@@ -41,4 +41,12 @@ tasks.register<Test>("paperRuntimeTest") {
     workingDir = probeDirectory
     doFirst { probeDirectory.mkdirs() }
     maxHeapSize = "2g"
+}
+
+// Exercise the published artifact, not the test classpath's unshaded NBT dependency.
+val packagedPlugin = rootProject.tasks.named<Jar>("shadowJar")
+tasks.test {
+    dependsOn(packagedPlugin)
+    inputs.file(packagedPlugin.flatMap { it.archiveFile })
+    doFirst { systemProperty("musicbox.jar", packagedPlugin.get().archiveFile.get().asFile.absolutePath) }
 }
