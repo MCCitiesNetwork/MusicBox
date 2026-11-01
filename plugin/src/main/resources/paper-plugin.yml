@@ -1,0 +1,15 @@
+name: MusicBox
+version: '${version}'
+main: com.minecraftcitiesnetwork.musicbox.MusicBox
+api-version: '26.3'
+authors: [Spliterash, MCCitiesNetwork]
+dependencies:
+  server:
+    NoteBlockAPI:
+      load: BEFORE
+      required: true
+      join-classpath: true
+    Vault:
+      load: BEFORE
+      required: false
+      join-classpath: true
